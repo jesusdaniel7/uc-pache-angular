@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+// Importing Normalize
+@import '~normalize.css';
+
+//Importando Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+
+$rose-color: #fd4d5a;
+$blue-black-background: #0c0116;
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.top-message{
+    background: $rose-color;
+    height: 60px;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        color: white;
+        font-size: 20px;
+        font-weight:300;
+    }
+}
