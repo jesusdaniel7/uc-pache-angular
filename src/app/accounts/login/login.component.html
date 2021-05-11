@@ -1,1 +1,21 @@
-<p>login works!</p>
+<!-- <div class="top-message"><h1>Iniciar sesion</h1></div> -->
+
+<section class="login-section">
+    <h1>Login</h1>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form">
+                <input type="text" placeholder="usuario"/>
+                <input type="password" placeholder="contraseña"/>
+                <button>login</button>
+                <p class="message">¿No tienes cuenta? <a routerLink="/cuenta/registro">Crear una cuenta</a></p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+</script>

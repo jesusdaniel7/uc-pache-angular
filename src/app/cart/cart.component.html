@@ -1,9 +1,7 @@
 <div class="top-message"><h1>Carrito</h1></div>
-<br>
-<br>
 <div class="container">
     <div class="payment_details">
-      <h1>Payment Information</h1>
+      <h1>Informac</h1>
       <div class="details_card">
         <div class="name_address">
           <div class="first_lastName">
@@ -49,9 +47,9 @@
             </div>
             <div class="product_rate_info">
               <h1>$ 200</h1>
-              <span class="pqt-minus">-</span>
-              <span class="pqt">1</span>
-              <span class="pqt-plus">+</span>
+              <span class="pqt-minus" (click)="restarNike()">-</span>
+              <span class="pqt">{{products[0].cuantity}}</span>
+              <span class="pqt-plus" (click)="sumarNike()">+</span>
             </div>
           </div>
         </div>
@@ -67,16 +65,16 @@
             </div>
             <div class="product_rate_info">
               <h1>$ 160</h1>
-              <span class="pqt-minus">-</span>
-              <span class="pqt">{{nikeCantity}}</span>
-              <span class="pqt-plus" (click)="sumarNike()">+</span>
+              <span class="pqt-minus" (click)="restarAmazonPrime()">-</span>
+              <span class="pqt">{{products[1].cuantity}}</span>
+              <span class="pqt-plus" (click)="sumarAmazonPrime()">+</span>
             </div>
           </div>
         </div>
         <hr />
         <div class="order_price">
           <p>Order summary</p>
-          <h4>$400</h4>
+          <h4>${{ordersumary}}</h4>
         </div>
         <div class="order_service">
           <p>Additional Service</p>
@@ -84,7 +82,7 @@
         </div>
         <div class="order_total">
           <p>Total Amount</p>
-          <h4>$370</h4>
+          <h4>${{ordersumary + 10}}</h4>
         </div>
       </div>
     </div>

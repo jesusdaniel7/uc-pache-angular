@@ -27,3 +27,24 @@ body{
         font-weight:300;
     }
 }
+
+
+
+
+/* custom scrool bar */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $rose-color;
+    background: linear-gradient($blue-black-background, $rose-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--pink);
+}
+
+/* End custom scrool bar*/
