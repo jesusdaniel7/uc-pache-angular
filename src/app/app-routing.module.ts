@@ -1,8 +1,10 @@
+import { createComponent } from '@angular/compiler/src/core';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './accounts/login/login.component';
 import { RegisterComponent } from './accounts/register/register.component';
 import { ProductsListComponent } from './administration/products-list/products-list.component';
+import { CreateComponent } from './administration/create/create.component';
 import { CartComponent } from './cart/cart.component';
 import { CollectionComponent } from './collection/collection.component';
 import { IndexComponent } from './index/index.component';
@@ -17,7 +19,8 @@ const routes: Routes = [
   {path:'zapatos', component:ShoesComponent},
   {path:'tecnologia', component:TechnologyComponent},
   {path:'carrito', component:CartComponent},
-  {path:'productos/lista', component:ProductsListComponent},
+  {path:'administracion/productos/listado', component:ProductsListComponent},
+  {path:'administracion/productos/agregar', component:CreateComponent},
   {path:'cuenta/inicio', component:LoginComponent},
   {path:'cuenta/registro', component:RegisterComponent}
 ];

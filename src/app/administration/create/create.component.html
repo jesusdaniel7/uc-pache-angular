@@ -1,0 +1,43 @@
+<div class="top-message"><h1>Agregar un nuevo producto al catálogo</h1></div>
+
+<div class="container mt-5">
+  <div class="container">
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label for="name" class="form-label">Nombre</label>
+        <input type="text" class="form-control" placeholder="Nombre del producto" id="name" />
+      </div>
+      <div class="col-md-6">
+        <label for="description" class="form-label">Descripción</label>
+        <input type="textbox" class="form-control" placeholder="Descripción del producto" id="description" />
+      </div>
+      <div class="col-12">
+        <label for="date" class="form-label">Fecha de creación</label>
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          placeholder="1234 Main St"
+        />
+      </div>
+      <div class="col-12">
+        <label for="marca" class="form-label">Marca</label>
+        <input
+          type="text"
+          class="form-control"
+          id="marca"
+          placeholder="Marca del producto"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="file" class="form-label">Imagen del producto</label>
+        <input type="file" class="form-control" id="file" />
+      </div>
+      
+      <div class="col-md-12">
+          <a routerLink="/administracion/productos/listado" class="btn btn-primary">Cancelar</a> |
+        <a routerLink="" class="btn btn-success">Agregar</a>
+      </div>
+    </form>
+  </div>
+</div>
