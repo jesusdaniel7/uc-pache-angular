@@ -1,5 +1,33 @@
-<app-carousel></app-carousel>
+<!-- <app-carousel></app-carousel> -->
+<app-helpers-generic-list [list]="products">
+  <ng-container vacio>
+    <p>No existen productos todavia</p>
+  </ng-container>
+  <ng-container contenido>
+    <section class="products-list">
 
+      <div class="product"  *ngFor="let product of products">
+        <div class="product-img-container">
+          <img
+            class="product-image"
+            [src]="product.photo"
+            [alt]="product.name"
+          />
+        </div>
+        <div class="product-info-container'">
+          <h4>{{product.name}}</h4>
+          <div class="price-cart">
+            <p>${{product.price}}</p>
+            <a (click)="agregarCarrito(product.id)"><i class="fas fa-cart-plus"></i></a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+  </ng-container>
+</app-helpers-generic-list>
+
+<!-- 
 <h1 class="btn btn-danger m-5">Descrubre nuestros productos</h1>
 <section class="products-list">
     <div class="product">
@@ -128,5 +156,5 @@
       </div>
       
     </div>  
-  </section>
+  </section> -->
   

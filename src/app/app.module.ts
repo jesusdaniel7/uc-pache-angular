@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpClientModule} from '@angular/common/http'
+import {ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,11 @@ import { CartComponent } from './cart/cart.component';
 import { ProductsListComponent } from './administration/products-list/products-list.component';
 import { CreateComponent } from './administration/create/create.component';
 import { FooterComponent } from './landing-page/footer/footer.component';
+import { HelpersGenericListComponent } from './helpers/helpers-generic-list/helpers-generic-list.component';
+import { ProductsDetailsComponent } from './products/products-details/products-details.component';
+import { GenericDetailsComponent } from './helpers/generic-details/generic-details.component';
+import { FormAccountComponent } from './accounts/form-account/form-account.component';
+import { AutorizadoComponent } from './accounts/autorizado/autorizado.component';
 
 @NgModule({
   declarations: [
@@ -34,11 +41,18 @@ import { FooterComponent } from './landing-page/footer/footer.component';
     CartComponent,
     ProductsListComponent,
     CreateComponent,
-    FooterComponent
+    FooterComponent,
+    HelpersGenericListComponent,
+    ProductsDetailsComponent,
+    GenericDetailsComponent,
+    FormAccountComponent,
+    AutorizadoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

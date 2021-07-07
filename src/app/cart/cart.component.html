@@ -1,88 +1,88 @@
+<app-helpers-generic-list [list]="products">
+  <ng-container vacio>
+    <p class="top-message">No has agregado productos a tu carrito</p>
+  </ng-container>
+  <ng-container contenido>
+    
 <div class="container">
-    <div class="payment_details">
-      <h1>Información del pedido</h1>
-      <div class="details_card">
-        <div class="name_address">
-          <div class="first_lastName">
-            <input type="text" placeholder="Primer Nombre" />
-            <input type="text" placeholder="Apellido" />
-          </div>
-          <div class="address">
-            <input type="text" onkeyup="change()" id="put" placeholder="Dirección" />
-            <input type="text" placeholder="Código de descuento" />
-            <input type="text" placeholder="Pais" />
-          </div>
+  <div class="payment_details">
+    <h1>Información del pedido</h1>
+    <div class="details_card">
+      <div class="name_address">
+        <div class="first_lastName">
+          <input type="text" placeholder="Primer Nombre" />
+          <input type="text" placeholder="Apellido" />
         </div>
-        <h1>Detalles de envio</h1>
-        <div class="shipping_card">
-          <div class="new_card">
-            <h4>Carlos Perez</h4>
-            <p id="output">Santo Domingo, Rep. Dom.</p>
-            <p>23000</p>
-          </div>
-          <div class="add_savedcard">
-            <h4>Carlos Perez</h4>
-            <p>Santiago, Rep. Dom (#43)</p>
-            <p>400053</p>
-          </div>
-        </div>
-        <div class="proced_payment">
-          <a href="">Proceder a pagar</a>
+        <div class="address">
+          <input
+            type="text"
+            onkeyup="change()"
+            id="put"
+            placeholder="Dirección"
+          />
+          <input type="text" placeholder="Código de descuento" />
+          <input type="text" placeholder="Pais" />
         </div>
       </div>
-    </div>
-    <div class="order_summary">
-      <h1>Resumen de orden</h1>
-      <div class="summary_card">
-        <div class="card_item">
-          <div class="product_img">
-            <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=643&q=80" alt="" />
-          </div>
-          <div class="product_info">
-            <h1>Nike Shoes</h1>
-            <p>Zapatos Nike de colección.</p>
-            <div class="close-btn">
-              <i class="fa fa-close"></i>
-            </div>
-            <div class="product_rate_info">
-              <h1>$ 200</h1>
-              <span class="pqt-minus" (click)="restarNike()">-</span>
-              <span class="pqt">{{products[0].cuantity}}</span>
-              <span class="pqt-plus" (click)="sumarNike()">+</span>
-            </div>
-          </div>
+      <h1>Detalles de envio</h1>
+      <div class="shipping_card">
+        <div class="new_card">
+          <h4>{{userName}}</h4>
+          <p id="output">Santo Domingo, Rep. Dom.</p>
+          <p>23000</p>
         </div>
-        <div class="card_item">
-          <div class="product_img">
-            <img src="https://images.unsplash.com/photo-1543512214-318c7553f230?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="" />
-          </div>
-          <div class="product_info">
-            <h1>Amazon Echo</h1>
-            <p>Controla tu hogar.</p>
-            <div class="close-btn">
-              <i class="fa fa-close"></i>
-            </div>
-            <div class="product_rate_info">
-              <h1>$ 160</h1>
-              <span class="pqt-minus" (click)="restarAmazonPrime()">-</span>
-              <span class="pqt">{{products[1].cuantity}}</span>
-              <span class="pqt-plus" (click)="sumarAmazonPrime()">+</span>
-            </div>
-          </div>
+        <div class="add_savedcard">
+          <h4>{{userName}}</h4>
+          <p>Santiago, Rep. Dom (#43)</p>
+          <p>400053</p>
         </div>
-        <hr />
-        <div class="order_price">
-          <p>Order summary</p>
-          <h4>${{ordersumary}}</h4>
-        </div>
-        <div class="order_service">
-          <p>Additional Service</p>
-          <h4>$10</h4>
-        </div>
-        <div class="order_total">
-          <p>Total Amount</p>
-          <h4>${{ordersumary + 10}}</h4>
-        </div>
+      </div>
+      <div class="proced_payment">
+        <a href="">Proceder a pagar</a>
       </div>
     </div>
   </div>
+  <div class="order_summary">
+    <h1>Resumen de orden</h1>
+    <div class="summary_card">
+      <div *ngFor="let product of products; let index = index">
+        <div class="card_item">
+          <div class="product_img">
+            <img [src]="product.product.photo" alt="" />
+          </div>
+          <div class="product_info">
+            <h1>{{product.product.name}}</h1>
+            <p>{{product.product.description}}.</p>
+            <div class="close-btn">
+              <i class="fa fa-close"></i>
+            </div>
+            <div class="product_rate_info">
+              <h1>${{product.product.price}}</h1>
+              <span class="pqt-minus " (click)="restarNike()">Cantidad</span>
+              <span class="pqt">1</span>
+              <span class="btn btn-danger p-1" (click)="deleteCartProduct(product.productId)">x</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+      <div class="order_price">
+        <p>Costo de orden</p>
+        <h4>$ {{cartDTO.total}}</h4>
+      </div>
+      <div class="order_service">
+        <p>Envio</p>
+        <h4>$0</h4>
+      </div>
+      <div class="order_total">
+        <p>Costo total</p>
+        <h4>$ {{cartDTO.total}}</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </ng-container>
+</app-helpers-generic-list>

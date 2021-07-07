@@ -1,4 +1,9 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Cart, CartDTOInterface, CartInterface } from '../models/cart';
+import { CartServiceService } from '../services/cart-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -6,45 +11,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  constructor() {}
+  constructor(private cartService: CartServiceService, private router: Router) {}
 
-  ngOnInit(): void {}
+  cartDTO: CartDTOInterface;
+  products: CartInterface[];
 
-  // nike:number = 1;
-  // amazonPrime:number = 1;
 
-  products = [
-    { name: 'nike', cuantity: 1, price: 200 },
-    { name: 'amazon', cuantity: 1, price: 160 },
-  ];
+  userName = localStorage.getItem("name");
 
-  ordersumary:number = this.products[0].price + this.products[1].price;
-
-  sumarNike() {
-    this.products[0].cuantity++;
-    this.ordersumary+=this.products[0].price;
+  ngOnInit(): void {
+    this.getCart();
+  }
+  // START Consumiento servicio
+  getCart() {
+    this.cartService
+      .getCart()
+      .subscribe((response: HttpResponse<CartDTOInterface>) => {
+        this.cartDTO = response.body;
+        this.products = this.cartDTO.carts;
+        console.log(this.products);
+      });
   }
 
-  restarNike() {
-    if (this.products[0].cuantity >= 1) {
-      this.products[0].cuantity--;
-      this.ordersumary-=this.products[0].price;
-    } else {
-      this.products[0].cuantity = 0;
-    }
+  deleteCartProduct(productId: string){
+    this.cartService.deleteCartProduct(productId).subscribe(() => {
+      alert("Se ha eliminado del carrito!");
+      window.location.reload();
+    });
   }
-
-  sumarAmazonPrime() {
-    this.products[1].cuantity++;
-    this.ordersumary+=this.products[1].price;
-  }
-
-  restarAmazonPrime() {
-    if (this.products[1].cuantity >= 1) {
-      this.products[1].cuantity--;
-      this.ordersumary-=this.products[1].price;
-    } else {
-      this.products[1].cuantity = 0;
-    }
-  }
+  //END Consumiento servicio
 }
